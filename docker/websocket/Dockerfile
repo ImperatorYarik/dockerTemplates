@@ -8,5 +8,5 @@ RUN npm install
 COPY . .
 
 CMD ["node", "index.js"]
-CMD ["sleep", "1000"]
+#CMD ["sleep", "1000"]
 
