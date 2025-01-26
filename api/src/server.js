@@ -1,5 +1,5 @@
 const app = require('./app');
-const { connectDB } = require('./config/dbConfig');
+const { connectDB } = require('./config/database');
 
 const PORT = process.env.PORT || 3000;
 
@@ -10,4 +10,5 @@ connectDB().then(() => {
   });
 }).catch((err) => {
   console.error('Failed to connect to the database:', err);
+  process.exit(1); // Exit the process with an error code
 });

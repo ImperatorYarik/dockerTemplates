@@ -3,6 +3,7 @@ services:
     build:
       context: ./frontend
       dockerfile: ../docker/frontend/Dockerfile
+    command: ["sh", "-c", "npm install && npm run dev -- --host 0.0.0.0"]
     volumes:
       - ./frontend:/app
     networks:
@@ -12,6 +13,7 @@ services:
     build:
       context: ./api
       dockerfile: ../docker/api/Dockerfile
+    command: ["sh", "-c", "npm install && node src/server.js"]
     volumes:
       - ./api:/app
     networks:
@@ -21,6 +23,7 @@ services:
     build:
       context: ./websocket
       dockerfile: ../docker/websocket/Dockerfile
+    command: ["sh", "-c", "npm install && node index.js"]
     volumes:
       - ./websocket:/app
     networks:
@@ -31,7 +34,7 @@ services:
     volumes:
       - ./configs/nginx:/etc/nginx/conf.d
     ports:
-      - "80:80"
+      - ${NGINX_PORT}:80
     networks:
       - network
 
@@ -44,7 +47,12 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     ports:
       - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
     networks:
       - network
 networks:
   network:
+
+volumes:
+  mysql_data:
