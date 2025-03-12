@@ -8,3 +8,4 @@ BRANCH: reactNodeWebSocketDockerTemplate
 
 - ### React + Laravel
 BRANCH: reactLaravelDockerTemplate
+Інсталювати пакет: docker compose exec --user root api composer require <ім'я>
