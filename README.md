@@ -5,3 +5,6 @@ This repository contains a collection of Docker templates for various applicatio
 
 - ### React + Express + Websocket + MySQL
 BRANCH: reactNodeWebSocketDockerTemplate
+
+- ### React + Laravel
+BRANCH: reactLaravelDockerTemplate
